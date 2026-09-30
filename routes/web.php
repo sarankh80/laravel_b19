@@ -1,0 +1,31 @@
+<?php
+
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\FrontController;
+
+Route::get('/', [FrontController::class, 'index']);
+Route::get('/about', [FrontController::class, 'about'])->name('about');
+
+Route::prefix('admin')->middleware('auth')->group(function () {
+
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+    
+Route::get('/category', [CategoryController::class, 'index'])->name('category');
+Route::get('/product', [ProductController::class, 'product'])->name('product');
+// Route::get('about', [AboutController::class, 'about'])->name('about');
+// Route::resource('categories', CategorysController::class);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
