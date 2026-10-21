@@ -41,18 +41,18 @@
                     <p>The condition is neither true nor false.</p>
                 @endif
                 <?php 
-                if ($a){
-                    echo '<p>The condition is true.</p>';
-                }else if ($b){
-                    echo '<p>The condition is false.</p>';
-                }else{
-                    echo '<p>The condition is neither true nor false.</p>';
-                }
+                // if ($a){
+                //     echo '<p>The condition is true.</p>';
+                // }else if ($b){
+                //     echo '<p>The condition is false.</p>';
+                // }else{
+                //     echo '<p>The condition is neither true nor false.</p>';
+                // }
                 ?>
-                {{$a = [1,2,3]}}
-                @for($a as $item)
+                {{-- {{$a = [1,2,3]}} --}}
+                {{-- @for($a as $item)
                     <p>{{$item}}</p>
-                @endforeach
+                @endforeach --}}
             </main>
         </div>
     </body>
