@@ -6,18 +6,25 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FrontController;
-
+use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Controllers\PostController;
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
 
 });
+Route::resource('post', PostController::class);
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
     
 Route::get('/category', [CategoryController::class, 'index'])->name('category');
+
 Route::get('/product', [ProductController::class, 'product'])->name('product');
 // Route::get('about', [AboutController::class, 'about'])->name('about');
 // Route::resource('categories', CategorysController::class);
@@ -27,5 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::match(['get', 'post'], '/contact',[FrontController::class, 'contact'])->name('contact');
 
 require __DIR__.'/auth.php';

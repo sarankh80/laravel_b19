@@ -33,13 +33,13 @@
             <main>
                 {{ $slot }}
 
-                @if($a)
+                {{-- @if($a)
                     <p>The condition is true.   {{$a}}</p>
                 @elseif($b)
                     <p>The condition is false.</p>
                 @else
                     <p>The condition is neither true nor false.</p>
-                @endif
+                @endif --}}
                 <?php 
                 // if ($a){
                 //     echo '<p>The condition is true.</p>';

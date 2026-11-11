@@ -1,5 +1,7 @@
 @extends('layouts.front')
 @section('content')
+
+<?php print_r($user); ?>
 <!-- Hero Banner Section -->
     <section class="relative bg-slate-900 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-30 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:16px_16px]"></div>
