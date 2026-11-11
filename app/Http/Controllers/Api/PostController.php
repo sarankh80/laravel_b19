@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Resources\PostResource;
 class PostController extends Controller
 {
     /**
@@ -12,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::all();
+        // return Post::all();
+        return PostResource::collection(Post::all());
     }
 
     /**
@@ -29,18 +31,18 @@ class PostController extends Controller
         //     // 'status' => 'required|boolean',
         //     // 'ordering' => 'required|integer',
         // ]);
-        $post = [
-            'user_id' => 1,
-            'title' => "This is title 1",
-            'content' => "This is content 1",
-            'slug' => "this-is-slug1",
-            'count' => 0,
-            'status' => 1,
-            'ordering' => 0,
-        ];
-        $post = Post::create($post);
+        // $post = [
+        //     'user_id' => 1,
+        //     'title' => "This is title 1",
+        //     'content' => "This is content 1",
+        //     'slug' => "this-is-slug1",
+        //     'count' => 0,
+        //     'status' => 1,
+        //     'ordering' => 0,
+        // ];
+        // $post = Post::create($post);
 
-        return response()->json($post, 201);
+        // return response()->json($post, 201);
     }
 
     /**
