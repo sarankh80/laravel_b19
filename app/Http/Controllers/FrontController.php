@@ -10,11 +10,6 @@ class FrontController extends Controller
     function index()
     {
         $user = User::all();
-        // $userget = User::get();
-
-        // $userid = User::find(1);
-        // $userwhere = User::where('post_id', 1)->get();
-
         return view('front.home', compact('user'));
     }
     function about()

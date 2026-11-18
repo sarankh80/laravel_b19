@@ -8,6 +8,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\PostController;
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/about', [FrontController::class, 'about'])->name('about');
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::post('/upload', [FileUploadController::class, 'store'])->name('upload');
 
 Route::match(['get', 'post'], '/contact',[FrontController::class, 'contact'])->name('contact');
 
